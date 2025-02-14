@@ -1,69 +1,71 @@
-body {
-    background: black;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    text-align: center;
+/* Full Dark Theme */
+html, body {
+    background-color: #000000;
+    color: #ffffff;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
+    text-align: center;
+    overflow: hidden;
 }
 
-.title {
-    font-size: 3rem;
+/* Welcome Text Animation */
+#intro-text {
+    font-size: 28px;
     font-weight: bold;
-    text-transform: uppercase;
-    text-shadow: 0px 0px 10px red;
-    animation: fadeIn 2s ease-in-out;
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards;
 }
 
-.subtitle {
-    font-size: 1.5rem;
-    margin-top: 10px;
-    opacity: 0.7;
+/* Dark Mist Effect */
+#mist {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: url('https://your-mist-image.com/mist.png') no-repeat center center/cover;
+    opacity: 1;
+    animation: mistFade 5s ease-in-out forwards;
 }
 
-button {
-    margin-top: 20px;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    background: red;
+/* Scythe Animation */
+#scythe {
+    width: 200px;
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 1s;
+}
+
+#scythe:hover {
+    transform: rotate(-10deg) scale(1.1);
+    opacity: 1;
+}
+
+/* Hidden Button */
+#secret-button {
+    display: none;
+    background: darkred;
     color: white;
+    padding: 10px 20px;
+    font-size: 18px;
     border: none;
     cursor: pointer;
-    box-shadow: 0px 0px 10px red;
+    transition: background 0.3s;
 }
 
-button:hover {
-    background: darkred;
-    box-shadow: 0px 0px 20px darkred;
+#secret-button:hover {
+    background: crimson;
 }
 
+/* Fade Animations */
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
-document.addEventListener("DOMContentLoaded", function () {
-    const mist = document.getElementById("mist");
-    const secretMessage = document.getElementById("secret-message");
-    const scythe = document.getElementById("scythe");
 
-    // Mist effect fades away to reveal secret message
-    setTimeout(() => {
-        mist.style.opacity = "0";
-        setTimeout(() => {
-            secretMessage.style.opacity = "1";
-        }, 1000);
-    }, 3000);
-
-    // Clickable Scythe Effect
-    scythe.addEventListener("click", function () {
-        scythe.classList.add("glow");
-        setTimeout(() => {
-            scythe.classList.remove("glow");
-        }, 1000);
-    });
-});
+@keyframes mistFade {
+    0% { opacity: 1; }
+    100% { opacity: 0; display: none; }
+}
