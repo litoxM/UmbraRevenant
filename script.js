@@ -10,3 +10,7 @@ document.getElementById("enter-btn").addEventListener("click", function() {
         window.location.href = "main.html"; // Redirect to the main page (to be created)
     }, 2000);
 });
+body {
+    background-color: #121212;
+    color: white;
+    text
