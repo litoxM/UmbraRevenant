@@ -46,3 +46,24 @@ button:hover {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+document.addEventListener("DOMContentLoaded", function () {
+    const mist = document.getElementById("mist");
+    const secretMessage = document.getElementById("secret-message");
+    const scythe = document.getElementById("scythe");
+
+    // Mist effect fades away to reveal secret message
+    setTimeout(() => {
+        mist.style.opacity = "0";
+        setTimeout(() => {
+            secretMessage.style.opacity = "1";
+        }, 1000);
+    }, 3000);
+
+    // Clickable Scythe Effect
+    scythe.addEventListener("click", function () {
+        scythe.classList.add("glow");
+        setTimeout(() => {
+            scythe.classList.remove("glow");
+        }, 1000);
+    });
+});
